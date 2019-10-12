@@ -1,0 +1,87 @@
+////////////////////////////////////////
+// LOGO
+.logo {
+    height: 3.25rem;
+    margin-left: 2rem;
+}
+
+
+////////////////////////////////////////
+// LOGO NAVIGATION
+.logo-nav {
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    border-radius: .5rem;
+    font-size: 2rem;
+    margin-top: .35rem;
+
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+.calcMe{
+    display: none;
+}
+
+.valider{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    border-radius: 10rem;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    position: relative;
+    cursor: pointer;
+    margin-top: .5rem;
+    margin-left: 4.5rem;
+}
+
+.obligatoire{
+    color:red;
+}
+
+////////////////////////////////////////
+// USER NAVIGATION
+.user-nav {
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    
+
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__user-photo {
+        border-radius: 50%;
+        margin-right: 1rem;
+        width: 20px;
+        height: 20px;
+        background: var(--color-grey-dark-2);
+    }
+
+}
+
+
+////////////////////////////////////////
+// SIDE NAVIGATION
+.side-nav {
+    font-size: 1.4rem;
+    list-style: none;
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+}
