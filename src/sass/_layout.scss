@@ -119,21 +119,40 @@
             }
         }
         &__total{
-            background-color: var(--color-green);
-            color: var(--color-grey-dark-1);
+            background-color: var(--color-total);
             font-weight: bold;
             font-size: 2rem;
             border-radius: .5rem;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             width: 130px;
             padding: .5rem;
-            margin-left: 3rem;
+            margin: 0 auto;
             span{
                 font-weight: 200;
                 font-size: 1.8rem;
                 margin-right: 1rem;
+                color: var(--color-grey-light-1);
             }
+        }
+        &__qt{
+            background-color: var(--color-qt);
+            color: var(--color-grey-dark-1);
+            font-weight: bold;
+            font-size: 2rem;
+            border-radius: 5rem;
+            display: flex;
+            align-items: center;
+            width: 130px;
+            span{
+                font-weight: bold;
+                font-size: 1.8rem;
+                margin: 1rem;
+                color: var(--color-grey-light-1);
+            }
+        }
+        &__hide{
+            display: none;
         }
     }
     &__item:hover{

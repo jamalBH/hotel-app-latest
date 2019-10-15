@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import map from 'lodash/map';
+import _ from 'lodash';
 import Modal from 'react-modal';
 // ACTIONS
 import * as nuitAction from '../actions/nuitActions';
@@ -42,7 +42,7 @@ constructor(props) {
 UNSAFE_componentWillReceiveProps(nextProps){
   let sum = 0;
   if(this.props.nuits !== nextProps.nuits){
-    map(nextProps.nuits, (nuit) =>{
+    _.map(nextProps.nuits, (nuit) =>{
       sum = sum + nuit.hotel.price;
     });
     this.setState({total: sum})
@@ -67,7 +67,7 @@ closeModalConf = () =>{
                   prenom: '',
                   email: '',
                   adresse: ''});
-  this.props.resetNuit();
+  //this.props.resetNuit();
 }
 
 getImg = (hotel) => {
@@ -110,8 +110,12 @@ handleSubmit = (event) => {
 
 getShowNuits = (nuits) => {
   const {total} = this.state;
+  const result = _.chain(nuits)
+                  .groupBy(data => data.hotel.id)
+                  .map((value, key) => ({ id: key, qt: value.length, hotel: value[0].hotel }))
+                  .value();
 return <div>
-  {map(nuits, (nuit, i) => (
+  {_.map(result, (nuit, i) => (
   <div className="hotel-view-min__item" key={i}>
   <div>
     <img src={this.getImg(nuit.hotel)} alt={nuit.hotel.img} className="hotel-view-min__item_img"/>
@@ -120,6 +124,9 @@ return <div>
     <b>{nuit.hotel.price}&euro;</b>
     <br/>
     <span className="hotel-view-min__item__price-sm">prix/nuit</span>
+  </div>
+  <div className={nuit.qt > 1 ? "hotel-view-min__item__qt": "hotel-view-min__item__hide"}>
+    <span>{nuit.qt}</span>
   </div>
 </div>
 ))}
@@ -153,7 +160,7 @@ render() {
             <div className="content">
                 <main className="hotel-view">
                   {/** HOTEL NUITS*/}
-                  {map(hotels, (hotel, i) => (
+                  {_.map(hotels, (hotel, i) => (
                     <div className="hotel-view__item" key={i} onClick={() => this.sendNuit(hotel)}>
                     <div>
                       <img src={this.getImg(hotel)} alt={hotel.img} className="hotel-view__item_img"/>
